@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <div class="media">
+    <img class="account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
+  <!-- FORM HERE -->
+  {% comment %} dont forget to add a encoding (enctype) type to form method {% endcomment %}
+  <form method="POST" enctype='multipart/form-data'>
+    {% comment %} post request only sends a request {% endcomment %}
+    {% comment %}csrf token protects us from attacks{% endcomment %}
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+        {% comment %} {{ form }} {% endcomment %}
+        {{ u_form|crispy }}
+        {{ p_form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

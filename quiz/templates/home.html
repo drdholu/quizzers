@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Welcome {{user}}</h1>
+    {% else %}
+        <h1>HOME PAGE</h1>
+    {% endif %}
+{% endblock content %}

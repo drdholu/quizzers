@@ -1,0 +1,13 @@
+.content-section{
+  height: 100vh;
+}
+
+.media{
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+img.account-img{
+  width: 10em;
+}
