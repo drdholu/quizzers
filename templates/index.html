@@ -21,7 +21,7 @@
         <nav>
           <ul>
             <li><a href="{% url 'quiz_home' %}">Home</a></li>
-            <li>Take Quiz</li>
+            <li><a href="{% url 'take_quiz' %}">Take Quiz</a></li>
             <li><a href="{% url 'quiz_about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li>   

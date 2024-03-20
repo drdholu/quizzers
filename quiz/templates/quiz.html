@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>Take Quiz</h1>
+    
+    <select name="category">
+        <option value="Choose">Choose</option>
+        {% for category in categories %}
+            <option value='{{category.category_name}}'>{{category.category_name}}</option>
+        {% endfor %}
+    </select>
+{% endblock content %}  

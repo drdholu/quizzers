@@ -38,15 +38,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+]
+
+MY_APPS = [
     # my apps
     'quiz.apps.QuizConfig',
     'users.apps.UsersConfig',
-    
+]
+
+THIRD_PARTY = [
     # third part apps
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_extensions', # allows easy importing for stuff in python shell
 ]
+
+INSTALLED_APPS = INSTALLED_APPS + MY_APPS + THIRD_PARTY
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

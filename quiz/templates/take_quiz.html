@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>Take Quiz</h1>
+    
+    <select name="category">
+        <option value="Choose">Choose</option>
+        {% for category in categories %}
+            <option value='{{category.category_name}}'>{{category.category_name}}</option>
+        {% endfor %}
+    </select>
+    {% comment %} {% for category in categories %}
+
+        <p>{{category.category.all()}}<p/>
+    {% endfor %} {% endcomment %}
+        {% comment %} {% for question in questions  %}
+            <p>{{question.question}}</p>
+        {% endfor %} {% endcomment %}
+    {% for category in categories %}
+        <p style="font-weight:bold">{{ category.category_name }}</p>
+        {% for question in category.category.all %}
+            <p>{{ question.question }}</p>
+        {% endfor %}
+    {% endfor %}
+{% endblock content %}  
