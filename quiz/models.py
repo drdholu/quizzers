@@ -30,7 +30,7 @@ class Question(BaseModel):
     
     def __str__(self):
         return self.question
-    
+    #git push trial
     def get_ans(self):
         # this creates a list of the answers
         answer_objs = list(Answer.objects.filter(question=self)) # converted into a list to allow shuffling
