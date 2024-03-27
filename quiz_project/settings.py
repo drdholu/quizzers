@@ -44,6 +44,8 @@ MY_APPS = [
     # my apps
     'quiz.apps.QuizConfig',
     'users.apps.UsersConfig',
+    'quizes.apps.QuizesConfig',
+    'results.apps.ResultsConfig',
 ]
 
 THIRD_PARTY = [

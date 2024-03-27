@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from quizes.models import *
 from django.http import HttpResponse, JsonResponse
 import random
 
@@ -20,7 +21,7 @@ def get_quiz(request):
                 "question": question_obj.question,
                 "marks": question_obj.marks,
                 # instead of bringing answers data here, we make a function in Question model itself and call it here
-                'answers': question_obj.get_ans()
+                # 'answers': question_obj.get_ans()
             })
             
         payload = {'status': True, 'data': data}
@@ -31,7 +32,9 @@ def get_quiz(request):
     return HttpResponse("Something went wrong")
 
 def take_quiz(request):
-    context = {'categories': Category.objects.all(), 'questions': Question.objects.all()}
+    context = {'categories': Category.objects.all(), 
+               'questions': Question.objects.all(),
+               'quizes': Quiz.objects.all()}
     
     # if request.GET.get('category'):
     #     return redirect(f"/quiz/?category={request.GET.get('category')}")
