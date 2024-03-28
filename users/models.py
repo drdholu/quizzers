@@ -15,8 +15,8 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
     
     # scales down the image for better performance
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         # import image using pillow library
         img = Image.open(self.image.path)
