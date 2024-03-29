@@ -4,6 +4,7 @@ from django.db import models
 from django.db import models
 # from quiz.models import Category
 # Create your models here.
+import random
 
 DIFFICULTY_CHOICES = (
     ("Easy", "Easy"),
@@ -41,9 +42,9 @@ class Quiz(models.Model):
         related_name="quizes"  # Updated related_name
     )
 
-    number_of_questions = models.IntegerField()
+    number_of_questions = models.PositiveIntegerField()
 
-    time = models.IntegerField(
+    time = models.PositiveIntegerField(
         help_text="Duration of the quiz in minutes"
     )
 
