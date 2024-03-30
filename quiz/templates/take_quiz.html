@@ -2,6 +2,7 @@
 {% block content %}
     <h1>Take Quiz</h1>
 
+<<<<<<< HEAD
     <form>
         <select name="quizes">
             <option value="Choose">Choose</option>
@@ -19,6 +20,17 @@
             {% for question in quiz.category.category.all %}
                 <p>{{ question }}</p>
             {% endfor %}
+=======
+        <p>{{category.category.all()}}</p>
+    {% endfor %} {% endcomment %}
+        {% comment %} {% for question in questions  %}
+            <p>{{question.question}}</p>
+        {% endfor %} {% endcomment %}
+    {% for category in categories %}
+        <p style="font-weight:bold">{{ category.category_name }}</p>
+        {% for question in category.category.all %}
+            <p>{{ question.question }}</p>
+>>>>>>> 53340d6352644474b917f8fe79476b5713827bf6
         {% endfor %}
 
 {% endblock content %}
