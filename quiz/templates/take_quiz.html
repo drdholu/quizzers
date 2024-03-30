@@ -1,15 +1,26 @@
 {% extends "index.html" %}
 {% block content %}
     <h1>Take Quiz</h1>
-    
-    <select name="category">
-        <option value="Choose">Choose</option>
-        {% for category in categories %}
-            <option value='{{category.category_name}}'>{{category.category_name}}</option>
-        {% endfor %}
-    </select>
-    {% comment %} {% for category in categories %}
 
+<<<<<<< HEAD
+    <form>
+        <select name="quizes">
+            <option value="Choose">Choose</option>
+            {% for quiz in quizes %}
+                <option value='{{quiz}}'>{{quiz}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Select</button>
+    </form>
+
+    <!-- Questions API -> http://127.0.0.1:8000/api/get-quiz/?category={{quiz}} -->
+
+        {% for quiz in quizes %}
+        <p style="font-weight:bold">{{ quiz.category }}</p>
+            {% for question in quiz.category.category.all %}
+                <p>{{ question }}</p>
+            {% endfor %}
+=======
         <p>{{category.category.all()}}</p>
     {% endfor %} {% endcomment %}
         {% comment %} {% for question in questions  %}
@@ -19,6 +30,56 @@
         <p style="font-weight:bold">{{ category.category_name }}</p>
         {% for question in category.category.all %}
             <p>{{ question.question }}</p>
+>>>>>>> 53340d6352644474b917f8fe79476b5713827bf6
         {% endfor %}
-    {% endfor %}
-{% endblock content %}  
+
+{% endblock content %}
+
+
+
+{% comment %} {% extends "index.html" %}
+{% block content %}
+    <h1>Take Quiz</h1>
+    
+    <form id="quiz-form">
+        <select id="quiz-select" name="quiz">
+            <option value="">Choose</option>
+            {% for quiz in quizes %}
+                <option value="{{ quiz }}">{{ quiz }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Select</button>
+    </form>
+
+    <div id="question-container">
+        <!-- Questions will be displayed here -->
+    </div>
+
+    <script>
+        document.getElementById("quiz-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var quizId = document.getElementById("quiz-select").value;
+
+            if (quizId) {
+                // Fetch questions using AJAX
+                fetch("/api/get-quiz/?category=" + quizId)
+                .then(response => (response.json()))
+                .then(data => {
+                    var questionContainer = document.getElementById("additional-info");
+                    //questionContainer.innerHTML = ""; // Clear existing info
+                    console.log(data);
+                    data.data.forEach(info => {
+                        var p = document.createElement("p");
+                        p.textContent = info.question;
+                        questionContainer.appendChild(p);
+                    });
+                })
+                .catch(error => console.error("Error fetching questions:", error));
+            }
+        });
+    </script>
+{% endblock %} {% endcomment %}
+
+
+

@@ -1,7 +1,6 @@
 from django.db import models
+import random
 
-# Create your models here.
-from django.db import models
 # from quiz.models import Category
 # Create your models here.
 import random
@@ -12,6 +11,30 @@ DIFFICULTY_CHOICES = (
     ("Hard", "Hard"),
 )
 
+# Topic class
+# class Topic(models.Model):
+#     """Topic: The topic of the quizes
+#     """
+
+#     name = models.CharField(max_length=120)
+    
+#     description = models.TextField(
+#         default="Programming",
+#         blank=True,
+#         null=True
+#     )
+
+#     date = models.DateTimeField(
+#         auto_now_add=True,
+#         blank=True,
+#         null=True
+#     )
+
+#     def __str__(self):
+#         """
+#         Show the topic name in the Admin page
+#         """
+#         return self.name
 
 
 # Quiz model
@@ -32,6 +55,15 @@ class Quiz(models.Model):
         blank=True,
         null=True
     )
+
+    # topic = models.ForeignKey(
+    #     Topic,
+    #     on_delete=models.SET_NULL,
+    #     help_text="The topic the quiz will be evaluating about",
+    #     null=True,
+    #     blank=True,
+    #     related_name="quizes" # The way we reference the quiz using a Topic object
+    # )
     
     category = models.ForeignKey(
         'quiz.Category',  # Use string reference to avoid circular import
@@ -73,3 +105,4 @@ class Quiz(models.Model):
 
     class Meta:
         verbose_name_plural = "Quizes"
+
