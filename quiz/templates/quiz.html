@@ -2,10 +2,16 @@
 {% block content %}
     <h1>Take Quiz</h1>
     
-    <select name="category">
+    {% comment %} <select name="category">
         <option value="Choose">Choose</option>
         {% for category in categories %}
             <option value='{{category.category_name}}'>{{category.category_name}}</option>
+        {% endfor %}
+    </select> {% endcomment %}
+    <select name="quizes">
+        <option value="Choose">Choose</option>
+        {% for quiz in quizes %}
+            <option value='{{quiz.quizes.category}}'>{{quiz.quizes.category}}</option>
         {% endfor %}
     </select>
 {% endblock content %}  

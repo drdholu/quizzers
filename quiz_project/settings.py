@@ -53,6 +53,7 @@ THIRD_PARTY = [
     'crispy_forms',
     'crispy_bootstrap4',
     'django_extensions', # allows easy importing for stuff in python shell
+    'bootstrap5',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + MY_APPS + THIRD_PARTY
@@ -142,7 +143,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'quiz/static/' # All static files available here (CSS + JS)
+
+# STATIC_ROOT = BASE_DIR / 'staticfiles/'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'quiz' / 'static' ,
+#     BASE_DIR / 'quizes' /  'static',
+# ]
 
 
 #changing the directory where the profile_pics are stored

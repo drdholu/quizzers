@@ -17,3 +17,4 @@ class QuizAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Quiz, QuizAdmin)
+# admin.site.register(Topic)

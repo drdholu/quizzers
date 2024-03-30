@@ -31,7 +31,8 @@ urlpatterns = [
     path('profile/', user_views.profile, name = 'profile'),
     path('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'users/logout.html'), name = 'logout'),
-    path('', include('quiz.urls'))
+    path('', include('quiz.urls')),
+    path('', include('quizes.urls', namespace='quizes'))
 ]
 #adds url only if we are in debug mode
 if settings.DEBUG:
