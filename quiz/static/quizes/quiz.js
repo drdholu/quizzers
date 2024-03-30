@@ -47,13 +47,14 @@ const activateTimer = (time) => {
 };
 
 
+
 $.ajax({
     type: 'GET',
     url: `${url2}/data`, // Gets data from JsonResponse
     success: function(response) {
         const data = response.data;
         const time = response.time;
-        console.log(response.data);
+        // console.log(response.data);
         data.forEach((element) => {
             for (const [question, answers] of Object.entries(element)) {
                 quizBox.innerHTML += `
