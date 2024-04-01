@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from results.models import Result
 
 from django.contrib.auth.decorators import login_required
 
@@ -51,7 +52,8 @@ def profile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'results': Result
     }
 
     return render(request, 'users/profile.html', context)

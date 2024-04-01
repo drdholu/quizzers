@@ -33,8 +33,8 @@
           <ul>
             <li><a href="{% url 'quiz_home' %}">Home</a></li>
             {% comment %} <li><a href="{% url 'take_quiz' %}">Take Quiz</a></li> {% endcomment %}
-            <li><a href="/quiz_list">Quiz List</a></li>
             <li><a href="{% url 'quiz_about' %}">About</a></li>
+            {% if user.is_authenticated %} <li><a href="/quiz_list">Quiz List</a></li>{% endif %}
             {% if user.is_authenticated %}
             <li>   
                 <a class="nav-item nav-link">

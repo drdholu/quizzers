@@ -2,19 +2,15 @@ from django.contrib import admin
 from quiz.models import *
 from .models import Quiz
 
-# Register your models here.
-class AnswerAdmin(admin.TabularInline):
+
+class AnswerAdmin(admin.StackedInline):
     model = Answer
-    extra = 0
-    
-    
+
 class QuestionAdmin(admin.StackedInline):
     model = Question
     inlines = [AnswerAdmin]
 
+
+@admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
-    inlines = [QuestionAdmin]
-
-
-admin.site.register(Quiz, QuizAdmin)
-# admin.site.register(Topic)
+    inlines = [QuestionAdmin, AnswerAdmin]

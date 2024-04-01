@@ -1,5 +1,6 @@
 from django.db import models
 import random
+from quiz.models import *
 
 # from quiz.models import Category
 # Create your models here.
@@ -73,7 +74,16 @@ class Quiz(models.Model):
         related_name="quizes"  # Updated related_name
     )
 
-    number_of_questions = models.IntegerField()
+    number_of_questions = models.IntegerField(null=True)
+    
+    # question = models.ForeignKey(
+    #     'quiz.Question',
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=True,
+    #     related_name="quizes_question"
+        
+    # )
 
     time = models.IntegerField(
         help_text="Duration of the quiz in minutes"

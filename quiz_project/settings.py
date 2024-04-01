@@ -54,6 +54,7 @@ THIRD_PARTY = [
     'crispy_bootstrap4',
     'django_extensions', # allows easy importing for stuff in python shell
     'bootstrap5',
+    # 'import_export',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + MY_APPS + THIRD_PARTY
@@ -166,3 +167,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# IMPORT_EXPORT_USE_TRANSACTIONS = True
