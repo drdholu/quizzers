@@ -16,4 +16,5 @@ urlpatterns = [
     path('quiz_list/quiz/<pk>', views.QuizDetailView.as_view(), name='quiz_view'),
     path('quiz_list/quiz/<pk>/data',views.quiz_detail_data_view, name='quiz_data_view'),
     path('quiz_list/quiz/<pk>/save', views.save_quiz_view, name='quiz_save_view'),
+    path('quiz_list/upload/', views.upload_quiz, name='upload_quiz'),
 ]

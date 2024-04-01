@@ -69,6 +69,8 @@ class Answer(BaseModel):
     answer = models.CharField(max_length=100)
     # text = models.TextField()
     is_correct = models.BooleanField(default=False)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="answers", null=True)
+    
     
     def __str__(self):
         return self.answer

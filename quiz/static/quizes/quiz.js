@@ -120,7 +120,7 @@ const sendData = () => {
             let scoreDiv = document.createElement('div')
             // scoreDiv.classList.add(...['container', 'my-auto', 'text-secondary'])
             
-            
+            console.log('Hello world')
             scoreDiv.innerHTML += `
                                <p> ${passed ? 'Congrats you passed the test!' : 'Sorry, you did not pass the test!'} Your result is ${score} %</p>
                                <p> Answered correctly: ${n_correct_answers}</p>
