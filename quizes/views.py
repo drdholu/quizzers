@@ -224,26 +224,39 @@ def upload_quiz(request):
         if form.is_valid():
             csv_file = request.FILES['csv_file']
             process_csv_file(csv_file)
-            return render(request, 'success.html')
+            return render(request, 'quizes/success.html')
     else:
         form = UploadCSVForm()
-    return render(request, 'upload_quiz.html', {'form': form})
+    return render(request, 'quizes/upload_quiz.html', {'form': form})
 
 def process_csv_file(csv_file):
     dataset = Dataset()
     imported_data = dataset.load(csv_file.read().decode('utf-8'), format='csv')
-    for data in imported_data:
-        category, created = Category.objects.get_or_create(category_name=data['Category'])
+    
+    for row in imported_data:
+        category_name = row[1]  # Assuming 'Category' is at index 1
+        category, created = Category.objects.get_or_create(category_name=category_name)
+        
         quiz, created = Quiz.objects.get_or_create(
-            name=data['Quiz'],
-            category=category,
-            time=data['Time'],
-            required_score=data['Required Score'],
-            number_of_questions=data['Number of Questions'],
-            difficulty=data['Difficulty']
+            name=row[0],  # Assuming 'Quiz' is at index 0
+            category=row[1],
+            time=row[7],  # Assuming 'Time' is at index 6
+            required_score=row[8],  # Assuming 'Required Score' is at index 7
+            number_of_questions=row[9],  # Assuming 'Number of Questions' is at index 8
+            difficulty=row[6]  # Assuming 'Difficulty' is at index 5
         )
-        question = Question.objects.create(quiz=quiz, question_text=data['Question'])
-        answer = Answer.objects.create(question=question, answer_text=data['Answer'], is_correct=data['Is Correct'])
+        
+        question = Question.objects.create(
+            quiz=quiz,
+            question=row[2],  # Assuming 'Question' is at index 2
+            marks=row[5]  # Assuming 'Marks' is at index 4
+        )
+        
+        answer = Answer.objects.create(
+            question=question,
+            answer_text=row[3],  # Assuming 'Answer' is at index 3
+            is_correct=True if row[4] == 'Yes' else False  # Assuming 'Is Correct' is at index 4
+        )
 
 # def upload_quiz(request):
 #     if request.method == 'POST' and request.FILES['csv_file']:
