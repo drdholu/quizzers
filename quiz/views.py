@@ -21,7 +21,7 @@ def get_quiz(request):
                 "question": question_obj.question,
                 "marks": question_obj.marks,
                 # instead of bringing answers data here, we make a function in Question model itself and call it here
-                # 'answers': question_obj.get_ans()
+                'answers': question_obj.get_ans()
             })
             
         payload = {'status': True, 'data': data}

@@ -4,6 +4,7 @@ from quiz.models import *
 
 # from quiz.models import Category
 # Create your models here.
+import random
 
 DIFFICULTY_CHOICES = (
     ("Easy", "Easy"),
@@ -74,18 +75,9 @@ class Quiz(models.Model):
         related_name="quizes"  # Updated related_name
     )
 
-    number_of_questions = models.IntegerField(null=True)
-    
-    # question = models.ForeignKey(
-    #     'quiz.Question',
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     related_name="quizes_question"
-        
-    # )
+    number_of_questions = models.PositiveIntegerField(null=True)
 
-    time = models.IntegerField(
+    time = models.PositiveIntegerField(
         help_text="Duration of the quiz in minutes"
     )
 
