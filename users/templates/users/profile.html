@@ -7,9 +7,29 @@
     <div class="media-body">
       <h2 class="account-heading">{{ user.username }}</h2>
       <p class="text-secondary">{{ user.email }}</p>
-      {% comment %} <p class="text-secondary">{{ results }}</p> {% endcomment %}
     </div>
   </div>
+
+  <hr>
+
+  <div class="score-media">
+    <h2>Score</h2>
+    <div class="media-body">
+      <p class="text">
+        {% for r in result %}
+        <li>
+          {% if r.user == user %}
+            {{r.quiz}}
+            {{r.score}}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
   <!-- FORM HERE -->
   {% comment %} dont forget to add a encoding (enctype) type to form method {% endcomment %}
   <form method="POST" enctype='multipart/form-data'>

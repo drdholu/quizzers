@@ -24,7 +24,7 @@ modalButtons.forEach(Button => Button.addEventListener('click', ()=>{
             <h5>Are you sure you want to begin "<b>${name}</b>"</h5>
         </div>
         
-        <div class="text-muted">
+        <div class="">
             <p>${description}</p>
             <ul>
                 <li>Created at: <b>${date}</b></li>

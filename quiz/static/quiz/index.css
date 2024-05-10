@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 *{
     font-family: 'Manrope', sans-serif;
@@ -9,6 +10,8 @@ body{
     margin: 0;
     box-sizing: border-box;
     /* color: red; */
+    background: rgb(34, 40, 49);
+
 }
 
 .container-fluid{
@@ -24,6 +27,8 @@ body{
 .content{
     /* padding: 0 1.5em 0 1.5em; */
     /* padding: 1.5em; */
+    color: rgb(238, 238, 238);
+    /* height: ; */
 }
 
 .nav{
@@ -33,6 +38,8 @@ body{
     align-items: center;
     justify-content: space-between;
     /* background-color: beige; */
+    background: rgb(118, 171, 174);
+    color: rgb(238, 238, 238);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     gap: 2em;
 }
@@ -41,6 +48,9 @@ body{
     font-weight: bold;
     font-size: 25px;
     margin: 0;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 .nav nav ul li{
@@ -48,12 +58,13 @@ body{
 }
 
 a{
+    color: rgb(238, 238, 238);
     text-decoration: none;
 }
 
 a:hover{
     font-weight: bold;
-    color: red;
+    color: rgb(49, 54, 63);
 }
 
 .nav nav ul{
@@ -69,34 +80,59 @@ a:hover{
     padding: 0;
 }
 
+.modal-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: rgb(49, 54, 63);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    color: rgb(238, 238, 238);
+}
+
+.about_container{
+    padding: 1.5em;
+    /* height: 90vh; */
+}
+
+.quiz_container{
+    padding: 1.5em;
+}
+
 .nav-link form button{
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
+    color: rgb(238, 238, 238);
 }
 
 .nav-link form button:hover{
     font-weight: bold;
-    color: red;
+    color: rgb(49, 54, 63);
 }
 
-.mini-footer {
- background:#192027;
- text-align:center;
- padding:32px 0
+.quiz_list_container{
+    padding: 1.5em;
 }
-.mini-footer p {
- margin:0;
- line-height:26px;
- font-size:15px;
- color:#999
+
+.hero-content{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
 }
-.mini-footer p a {
- color:#5867dd
+
+.hero-image{
+    width: auto;
 }
-.mini-footer p a:hover {
- color:#34bfa3
+
+.hero-image img{
+    height: 33em;
 }
 
 @media (max-width: 842px) {

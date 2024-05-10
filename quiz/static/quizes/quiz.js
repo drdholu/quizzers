@@ -7,7 +7,7 @@ const timerBox = document.getElementById('timer-box');
 let timer;
 
 const activateTimer = (time) => {
-    let storedTime = localStorage.getItem('timer');
+    let storedTime = localStorage.getItem(url2);
     let remainingTime = time * 60;
 
     if (storedTime) {
@@ -30,7 +30,7 @@ const activateTimer = (time) => {
         remainingTime--;
 
         // Update localStorage value every second
-        localStorage.setItem('timer', remainingTime.toString());
+        localStorage.setItem(url2, remainingTime.toString());
 
         if (remainingTime < 0) {
             clearInterval(timer);
@@ -39,14 +39,12 @@ const activateTimer = (time) => {
             sendData();
             
             // Reset localStorage value to initial state when timer is over
-            localStorage.setItem('timer', (time * 60).toString());
+            localStorage.removeItem(url2);
         } else {
             updateTimerDisplay();
         }
     }, 1000);
 };
-
-
 
 $.ajax({
     type: 'GET',
@@ -168,7 +166,8 @@ quizForm.addEventListener('submit', (element) => {
     element.preventDefault();
 
     // Clear the timer from localStorage on form submission
-    localStorage.removeItem('timer');
+    localStorage.removeItem(url2);
 
     sendData();
 });
+

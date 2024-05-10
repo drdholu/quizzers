@@ -2,11 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 
+from results import *
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #CASCADE -> Delete profile is user is deleted but not vice versa
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    
+    # def get_results(self):
+    #     """
+    #     Method to get all results associated with this user.
+    #     """
+    #     return Result.objects.filter(user=self)
+
+
     
     # Note -> to view profile in our database, we must register it in admin.py
     

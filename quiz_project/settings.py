@@ -54,6 +54,7 @@ THIRD_PARTY = [
     'crispy_bootstrap4',
     'django_extensions', # allows easy importing for stuff in python shell
     'bootstrap5',
+    'mathfilters',
     # 'import_export',
 ]
 
@@ -144,7 +145,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'quiz/static/' # All static files available here (CSS + JS)
+STATIC_URL = 'static/' # All static files available here (CSS + JS)
 
 # STATIC_ROOT = BASE_DIR / 'staticfiles/'
 
