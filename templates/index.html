@@ -36,10 +36,8 @@
             <li><a href="{% url 'quiz_about' %}">About</a></li>
             {% if user.is_authenticated %} 
               {% if user.is_staff %} 
-              <li><a href="{% url 'admin:index' %}">Add Quiz</a></li>
-                {% if user.is_superuser %}
-                  <li><a href="/quiz_list">Take Quiz</a></li>
-                {% endif %}
+              <li><a href="{% url 'admin:index' %}">Admin</a></li>
+              <li><a href="/quiz_list">Take Quiz</a></li>
               {% else %}
               <li><a href="/quiz_list">Take Quiz</a></li>
               {%endif%}

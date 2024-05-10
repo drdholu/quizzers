@@ -12,7 +12,7 @@
           Take quizzes, track your progress, and improve your knowledge.
         </p>
         {% if user.is_staff %}
-          <a class="btn btn-primary btn-lg" href="{% url 'admin:index' %}" role="button">Add Quiz</a>
+          <a class="btn btn-primary btn-lg" href="{% url 'admin:index' %}" role="button">Admin</a>
         {% else %}
           <a class="btn btn-primary btn-lg" href="/quiz_list" role="button">Take Quiz</a>
         {% endif %}
