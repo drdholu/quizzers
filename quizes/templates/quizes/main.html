@@ -32,7 +32,7 @@
 
 <div class="">
     <h1 class="h1">
-        Quiz List
+        Available Quizzes
     </h1>
 </div>
 
@@ -41,7 +41,7 @@
 {% for object in object_list %}
 <div class="m-3">
 
-    <button type="button" class="btn btn-link modal-button" data-pk="{{object.pk}}" data-date="{{object.date}}"
+    <button type="button" class="quiz-name btn btn-link modal-button" data-pk="{{object.pk}}" data-date="{{object.date}}"
         data-name="{{object.name}}" data-description="{{object.description}}" data-topic="{{object.category}}"
         data-questions="{{object.number_of_questions}}" data-difficulty="{{object.difficulty}}"
         data-time="{{object.time}}" data-pass="{{object.required_score}}" data-bs-toggle="modal"

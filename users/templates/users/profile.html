@@ -10,24 +10,44 @@
     </div>
   </div>
 
+  
+  {% if user.is_staff %}
+  {{pass}}
+  {% elif user.is_superuser %}
   <hr>
-
   <div class="score-media">
     <h2>Score</h2>
     <div class="media-body">
       <p class="text">
         {% for r in result %}
+        {% if r.user == user %}
         <li>
-          {% if r.user == user %}
             {{r.quiz}}
             {{r.score}}
+          </li>
           {% endif %}
-        </li>
         {% endfor %}
       </p>
     </div>
   </div>
-
+  {% else %}
+  <hr>
+  <div class="score-media">
+    <h2>Score</h2>
+    <div class="media-body">
+      <p class="text">
+        {% for r in result %}
+        {% if r.user == user %}
+        <li>
+            {{r.quiz}}
+            {{r.score}}
+          </li>
+          {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+  </div>
+  {% endif %}
   <hr>
 
   <!-- FORM HERE -->

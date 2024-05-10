@@ -34,8 +34,21 @@
             <li><a href="{% url 'quiz_home' %}">Home</a></li>
             {% comment %} <li><a href="{% url 'take_quiz' %}">Take Quiz</a></li> {% endcomment %}
             <li><a href="{% url 'quiz_about' %}">About</a></li>
-            {% if user.is_authenticated %} <li><a href="/quiz_list">Quiz List</a></li>{% endif %}
+            {% if user.is_authenticated %} 
+              {% if user.is_staff %} 
+              <li><a href="{% url 'admin:index' %}">Add Quiz</a></li>
+                {% if user.is_superuser %}
+                  <li><a href="/quiz_list">Take Quiz</a></li>
+                {% endif %}
+              {% else %}
+              <li><a href="/quiz_list">Take Quiz</a></li>
+              {%endif%}
+            {% endif %}
+            
             {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'profile'  %}">Profile</a>
+            </li>
             <li>   
                 <a class="nav-item nav-link">
                   <form method="post" action="{% url 'logout' %}">
@@ -44,9 +57,7 @@
                   </form>
                 </a>
             </li> 
-            <li>
-              <a href="{% url 'profile'  %}">Profile</a>
-            </li>
+            
               {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><a href="{% url 'register' %}">Register</a></li>

@@ -6,43 +6,78 @@
 <script src="{% static 'quiz/quizes/quiz.js' %}" defer></script>
 {% endblock scripts %} {% endcomment %}
 
+{% comment %} {% with already_submitted = 0 %}
+    {% for r in result %}
+        {% if r.quiz == quiz.name %}
+            {% with already_submitted = 1 %}
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
+{% endwith %} {% endcomment %}
+
 {% block content %}
-<div class="quiz_container">
-    <div class="container text-center py-4">
-        <h1 class="">Quiz: {{object.name}}</h1>
-    </div>
-    
-    <div class="row">
-        <div class="col">
-            <div class="text-secondary my-auto" id="score-box">
-                <p>Required score: {{object.required_score}} %</p>
+{% comment %} {% for r in result %}
+    {% if r.quiz == quiz.name %}
+        temp = 1
+        break
+    {% endif %}
+{% endfor %} {% endcomment %}
+
+{% if result %}
+    <div class="quiz_container">
+        <h1>Already Submitted</h1>
+    <div>
+
+        <div class="py-3">
+            <a href="{% url 'quizes:quiz_list_view' %}" class="btn btn-danger" id="">
+                Go back
+            </a>
+        </div>
+{% else %}
+    <div class="quiz_container">
+        <div class="container text-center py-4">
+            <h1 class="">Quiz: {{object.name}}</h1>
+            <p>
+                {% for r in Result %}
+                {% if r.quiz == quiz.name %}
+                    {{r.score}}
+                {% endif %}
+            {% endfor %}
+        </p>
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <div class="text-secondary my-auto" id="score-box">
+                    <p>Required score: {{object.required_score}} %</p>
+                </div>
+            </div>
+            <div class="col text-end" id="timer-box">
+                {{quiz.time}}
             </div>
         </div>
-        <div class="col text-end" id="timer-box">
-            {{quiz.time}}
+        
+        <div class="py-3">
+            
+        </div>
+        
+        <form class="mt-3" id="quiz-form">
+            {% csrf_token %}
+            <div id="quiz-box" class="">
+            </div>
+            <div class="text-center py-3">
+                <button type="submit" class="mt-4 btn btn-primary btn-lg">Send</button>
+                <button class="mt-4 btn btn-danger btn-lg"><a href="{% url 'quizes:quiz_list_view' %}">
+                    Go back
+                </a></button>
+                
+            </div>
+        </form>
+        
+        <div id="result-box">
+        
         </div>
     </div>
-    
-    <div class="py-3">
-        <a href="{% url 'quizes:quiz_list_view' %}" class="btn btn-danger" id="">
-            Go back
-        </a>
-    </div>
-    
-    <form class="mt-3" id="quiz-form">
-        {% csrf_token %}
-        <div id="quiz-box" class="">
-        </div>
-        <div class="text-center py-3">
-            <button type="submit" class="mt-4 btn btn-primary btn-lg">Send</button>
-        </div>
-    </form>
-    
-    <div id="result-box">
-    
-    </div>
-</div>
-
-
+{% endif %}
 
 {% endblock content %}

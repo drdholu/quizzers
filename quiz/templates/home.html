@@ -3,12 +3,19 @@
 <section class="hero py-5">
   <div class="container">
     <div class="hero-content row align-items-center">
-      <div class="col-md-6">
-        <h1 class="display-4">Welcome {{user.username}}!</h1>
+      <div class="hero-welcome col-md-6">
+        <div class="typewriter">
+          
+          <h1 class="display-4">Welcome {{user.username}}!</h1>
+        </div>
         <p class="lead">
           Take quizzes, track your progress, and improve your knowledge.
         </p>
-        <a class="btn btn-primary btn-lg" href="/quiz_list" role="button">Take Quiz</a>
+        {% if user.is_staff %}
+          <a class="btn btn-primary btn-lg" href="{% url 'admin:index' %}" role="button">Add Quiz</a>
+        {% else %}
+          <a class="btn btn-primary btn-lg" href="/quiz_list" role="button">Take Quiz</a>
+        {% endif %}
       </div>
       <div class="hero-image">
         <img
@@ -79,5 +86,26 @@
   </div>
 </main>-->
 {% else %}
-<h1>HOME PAGE</h1>
+<section class="hero py-5">
+  <div class="container">
+    <div class="hero-content row align-items-center">
+      <div class="hero-welcome col-md-6">
+        <div class="typewriter">
+          <h1 class="display-4">Welcome to Quizzers!</h1>
+        </div>
+        <p class="lead">
+          Take quizzes, track your progress, and improve your knowledge.
+        </p>
+        <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+      </div>
+      <div class="hero-image">
+        <img
+          src="{% static 'quiz/images/hero-image.jpg' %}"
+          alt="Hero Image"
+          class="img-fluid"
+        />
+      </div>  
+    </div>
+  </div>
+</section>
 {% endif %} {% endblock content %}

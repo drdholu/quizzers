@@ -5,6 +5,8 @@ from results.models import Result
 from quiz.models import Question, Answer, Category
 from .models import Quiz
 
+from results.models import Result
+
 from tablib import Dataset
 import pandas as pd
 from .forms import UploadCSVForm
@@ -21,6 +23,15 @@ class QuizListView(ListView):
 class QuizDetailView(DetailView):
     model = Quiz
     template_name = 'quizes/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        quiz = self.get_object()  # Get the quiz object
+        # Get the result for the current user and quiz, if exists
+        result = Result.objects.filter(quiz=quiz, user=self.request.user).first()
+        context['result'] = result  # Add the result to the context
+        return context
+    
 
 # def quiz_detail_data_view(request, pk):
 #     quiz = Quiz.objects.get(pk=pk)
